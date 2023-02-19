@@ -28,4 +28,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/arsip-input', function () {
+        return view('arsip-input');
+    })->name('arsip-input');
+});
+
 require __DIR__.'/auth.php';
